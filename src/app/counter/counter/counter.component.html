@@ -1,0 +1,15 @@
+<div
+  [style.background-image]="backgroundImage"
+  [style.height]="'100px'"
+  class="relative"
+>
+  <div
+    class="flex flex-col h-full"
+  >
+    <button class="w-full bg-transparent flex-grow basis-1" (click)="valueIncrease.emit()">+</button>
+    <button class="w-full bg-transparent flex-grow basis-1" (click)="valueDecrease.emit()">-</button>
+  </div>
+  <p class="absolute top-0 w-full h-full flex items-center justify-center -z-10">{{value}}</p>
+</div>
+
+
