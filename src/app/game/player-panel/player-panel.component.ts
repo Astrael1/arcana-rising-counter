@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PlayerAttributes } from 'src/app/game/player-panel/player-attributes';
+import { Component, Input, OnInit } from '@angular/core';
+import { ATTRIBUTE_INDEXES, PlayerAttributes, ZERO_ARRAY_FOR_ATTRIBUTES } from 'src/app/game/player-panel/player-attributes';
 
 @Component({
   selector: 'app-player-panel',
@@ -8,13 +8,16 @@ import { PlayerAttributes } from 'src/app/game/player-panel/player-attributes';
 })
 export class PlayerPanelComponent implements OnInit {
 
-  attributeIndexes = Object.keys(PlayerAttributes).map(v => Number(v)).filter(v => !isNaN(v));
-  attributeValues: Array<number> = new Array<number>(this.attributeIndexes.length);
+  @Input()
+  playerNumber: number;
+
+  attributeIndexes = ATTRIBUTE_INDEXES;
+  attributeValues: Array<number>;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.attributeIndexes.forEach(attribute => this.attributeValues[attribute] = 0);
+    this.attributeValues = [...ZERO_ARRAY_FOR_ATTRIBUTES];
   }
 
   increaseValue(index: number) {
