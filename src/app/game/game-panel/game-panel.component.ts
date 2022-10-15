@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { GameService } from 'src/app/game/game.service';
 
 @Component({
   selector: 'app-game-panel',
   templateUrl: './game-panel.component.html',
-  styleUrls: ['./game-panel.component.css']
+  styleUrls: ['./game-panel.component.css'],
 })
 export class GamePanelComponent implements OnInit {
+
+  @HostBinding('class')
+  classes = 'w-full h-full grid';
 
   playersNumber: number;
 

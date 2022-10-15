@@ -1,4 +1,9 @@
-<app-player-panel *ngFor="let i of range(playersNumber)"
-                  [playerNumber]="i"
-></app-player-panel>
+<div
+  id="grid-container"
+  class="grid w-full h-full"
+>
+  <app-player-panel *ngFor="let i of range(playersNumber)"
+                    [playerNumber]="i"
+  ></app-player-panel>
+</div>
 
