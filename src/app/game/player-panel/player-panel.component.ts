@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ATTRIBUTE_INDEXES, PlayerAttributes, ZERO_ARRAY_FOR_ATTRIBUTES } from 'src/app/game/player-panel/player-attributes';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ATTRIBUTE_INDEXES, ZERO_ARRAY_FOR_ATTRIBUTES } from 'src/app/game/player-panel/player-attributes';
+import { RotationDirection } from 'src/app/game/directives/RotationDirection';
 
 @Component({
   selector: 'app-player-panel',
@@ -8,13 +9,17 @@ import { ATTRIBUTE_INDEXES, PlayerAttributes, ZERO_ARRAY_FOR_ATTRIBUTES } from '
 })
 export class PlayerPanelComponent implements OnInit {
 
+  RotationDirection = RotationDirection;
+
   @Input()
   playerNumber: number;
 
   attributeIndexes = ATTRIBUTE_INDEXES;
   attributeValues: Array<number>;
 
-  constructor() { }
+  constructor(
+    public el: ElementRef
+  ) { }
 
   ngOnInit(): void {
     this.attributeValues = [...ZERO_ARRAY_FOR_ATTRIBUTES];

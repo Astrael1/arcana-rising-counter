@@ -1,10 +1,18 @@
-<div class="flex w-full h-full">
-  <app-counter *ngFor="let index of attributeIndexes"
-               [backgroundImage]="'linear-gradient(to bottom, rgba(255, 255, 0, 0.5), rgba(0, 0, 255, 0.5))'"
-               [value]="attributeValues[index]"
-               (valueIncrease)="increaseValue(index)"
-               (valueDecrease)="decreaseValue(index)"
-               class="grow"
+<div class="wrapper">
+  <div
+    class="flex w-full h-full counters-container"
+    [appRotate]="RotationDirection.LEFT"
+    [parentHeight]="el.nativeElement.offsetHeight"
+    [parentWidth]="el.nativeElement.offsetWidth"
   >
-  </app-counter>
+    <app-counter *ngFor="let index of attributeIndexes"
+                 [backgroundImage]="'linear-gradient(to bottom, rgba(255, 255, 0, 0.5), rgba(0, 0, 255, 0.5))'"
+                 [value]="attributeValues[index]"
+                 (valueIncrease)="increaseValue(index)"
+                 (valueDecrease)="decreaseValue(index)"
+                 class="grow"
+    >
+    </app-counter>
+  </div>
 </div>
+

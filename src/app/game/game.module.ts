@@ -5,6 +5,7 @@ import { CounterModule } from 'src/app/counter/counter.module';
 import { GamePanelComponent } from './game-panel/game-panel.component';
 import { GameService } from 'src/app/game/game.service';
 import { SetupComponent } from './setup/setup.component';
+import { RotateDirective } from 'src/app/game/directives/rotate.directive';
 
 
 
@@ -12,7 +13,8 @@ import { SetupComponent } from './setup/setup.component';
   declarations: [
     PlayerPanelComponent,
     GamePanelComponent,
-    SetupComponent
+    SetupComponent,
+    RotateDirective
   ],
   imports: [
     CommonModule,
