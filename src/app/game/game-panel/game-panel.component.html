@@ -2,8 +2,9 @@
   id="grid-container"
   class="grid w-full h-full"
 >
-  <app-player-panel *ngFor="let i of range(playersNumber)"
+  <app-player-panel *ngFor="let i of range(playersNumber); let first = first"
                     [playerNumber]="i"
+                    [rotation]="playerRotations[i]"
   ></app-player-panel>
 </div>
 

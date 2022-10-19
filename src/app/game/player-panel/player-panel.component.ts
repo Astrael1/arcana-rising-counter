@@ -9,10 +9,11 @@ import { RotationDirection } from 'src/app/game/directives/RotationDirection';
 })
 export class PlayerPanelComponent implements OnInit {
 
-  RotationDirection = RotationDirection;
-
   @Input()
   playerNumber: number;
+
+  @Input()
+  rotation: RotationDirection;
 
   attributeIndexes = ATTRIBUTE_INDEXES;
   attributeValues: Array<number>;

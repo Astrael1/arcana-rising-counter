@@ -1,5 +1,6 @@
-import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { GameService } from 'src/app/game/game.service';
+import { RotationDirection } from '../directives/RotationDirection';
 
 @Component({
   selector: 'app-game-panel',
@@ -8,10 +9,19 @@ import { GameService } from 'src/app/game/game.service';
 })
 export class GamePanelComponent implements OnInit {
 
+  RotationDirection = RotationDirection;
+
   @HostBinding('class')
   classes = 'w-full h-full grid';
 
   playersNumber: number;
+
+  playerRotations = [
+    RotationDirection.NONE,
+    RotationDirection.LEFT,
+    RotationDirection.RIGHT,
+    RotationDirection.UPSIDE_DOWN
+  ]
 
   constructor(
     private readonly gameService: GameService

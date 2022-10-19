@@ -1,5 +1,6 @@
 export enum RotationDirection {
   NONE,
   LEFT,
-  RIGHT
+  RIGHT,
+  UPSIDE_DOWN
 }
