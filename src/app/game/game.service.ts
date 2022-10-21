@@ -4,7 +4,7 @@ import { PlayerAttributes } from 'src/app/game/player-panel/player-attributes';
 @Injectable()
 export class GameService {
 
-  get playersNumber() {
+  get playersNumber(): number {
     return this._playersNumber;
   }
 
@@ -21,7 +21,7 @@ export class GameService {
   private _playersNumber;
 
   constructor() {
-    this.playersNumber = 4;
+    this.playersNumber = 2;
 
   }
 

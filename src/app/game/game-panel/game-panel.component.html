@@ -1,10 +1,12 @@
 <div
   id="grid-container"
-  class="grid w-full h-full"
+  class="grid w-full h-full {{gridClasses}}"
 >
-  <app-player-panel *ngFor="let i of range(playersNumber); let first = first"
-                    [playerNumber]="i"
-                    [rotation]="playerRotations[i]"
+  <app-player-panel *ngFor="let player of players"
+                    [playerVisualization]="player"
+                    class="
+                    row-span-1
+                    col-span-{{player.colspan}}"
   ></app-player-panel>
 </div>
 
