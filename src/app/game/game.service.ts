@@ -18,11 +18,9 @@ export class GameService {
     }
   }
 
-  private _playersNumber;
+  private _playersNumber = 2;
 
   constructor() {
-    this.playersNumber = 2;
-
   }
 
   playersAttributes: Array< Array<number> >;

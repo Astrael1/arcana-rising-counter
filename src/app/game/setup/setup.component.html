@@ -1,2 +1,31 @@
-<label for="players-number">Insert number of players</label>
-<input id="players-number">
+<form [formGroup]="playerForm"
+      (ngSubmit)="onFormSubmit()"
+      class="flex flex-col items-center"
+>
+  <label for="players-number"
+         class="text-stone-50
+       text-3xl
+       mb-2
+  ">
+    Insert number of players
+  </label>
+  <input id="players-number"
+         class="border-2
+             border-stone-50
+             text-stone-50
+             text-center
+             text-2xl
+             w-10 mb-2
+             bg-transparent"
+         type="number"
+         formControlName="playersNumber"
+  >
+  <button
+    [class.invisible]="!valuePresent"
+    type="submit"
+    class="text-stone-50
+       text-center
+       text-2xl">
+    GO!
+  </button>
+</form>

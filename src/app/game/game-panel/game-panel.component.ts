@@ -10,10 +10,8 @@ import { PlayerVisualization } from 'src/app/game/player-panel/PlayerVisualizati
 })
 export class GamePanelComponent implements OnInit {
 
-  RotationDirection = RotationDirection;
-
   @HostBinding('class')
-  classes = 'w-full h-full grid';
+  classes = 'w-full h-full';
 
   playersNumber: number;
   players: Array<PlayerVisualization>;
@@ -21,10 +19,10 @@ export class GamePanelComponent implements OnInit {
 
   constructor(
     private readonly gameService: GameService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.playersNumber = 5;
+    this.playersNumber = this.gameService.playersNumber;
     this.players = this.getPlayerVisualizations(this.playersNumber);
     this.gridClasses = this.getGridClasses(this.playersNumber);
 

@@ -6,6 +6,7 @@ import { GamePanelComponent } from './game-panel/game-panel.component';
 import { GameService } from 'src/app/game/game.service';
 import { SetupComponent } from './setup/setup.component';
 import { RotateDirective } from 'src/app/game/directives/rotate.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { RotateDirective } from 'src/app/game/directives/rotate.directive';
   ],
   imports: [
     CommonModule,
-    CounterModule
+    CounterModule,
+    ReactiveFormsModule
   ],
 	exports: [
 		GamePanelComponent,
