@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { GameService } from 'src/app/game/game.service';
+import { GameService } from 'src/app/game/service/game/game.service';
 import { RotationDirection } from '../directives/RotationDirection';
 import { PlayerVisualization } from 'src/app/game/player-panel/PlayerVisualization';
 

@@ -1,7 +1,7 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GameService } from 'src/app/game/game.service';
+import { GameService } from 'src/app/game/service/game/game.service';
 
 @Component({
   selector: 'app-setup',
@@ -24,7 +24,8 @@ export class SetupComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly gameService: GameService
+    private readonly gameService: GameService,
+    private elementRef: ElementRef
   ) {
   }
 
@@ -36,6 +37,7 @@ export class SetupComponent implements OnInit {
 
   onFormSubmit(): void {
     this.gameService.playersNumber = this.playerForm.value.playersNumber;
+    this.elementRef.nativeElement.style.display = 'none';
     this.router.navigateByUrl('/game');
   }
 }
