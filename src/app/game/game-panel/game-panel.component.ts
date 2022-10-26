@@ -30,6 +30,10 @@ export class GamePanelComponent implements OnInit {
 
   private getPlayerVisualizations(playersNumber: number) {
     switch (playersNumber) {
+      case 1:
+        return [
+          new PlayerVisualization(0, RotationDirection.NONE, 1)
+        ]
       case 2:
         return [
           new PlayerVisualization(0, RotationDirection.RIGHT, 1),
@@ -37,7 +41,7 @@ export class GamePanelComponent implements OnInit {
         ];
       case 3:
         return [
-          new PlayerVisualization(0, RotationDirection.NONE, 2),
+          new PlayerVisualization(0, RotationDirection.UPSIDE_DOWN, 2),
           new PlayerVisualization(1, RotationDirection.RIGHT, 1),
           new PlayerVisualization(2, RotationDirection.LEFT, 1),
         ];
@@ -50,7 +54,7 @@ export class GamePanelComponent implements OnInit {
         ]
       case 5:
         return [
-          new PlayerVisualization(0, RotationDirection.NONE, 2),
+          new PlayerVisualization(0, RotationDirection.UPSIDE_DOWN, 2),
           new PlayerVisualization(1, RotationDirection.RIGHT, 1),
           new PlayerVisualization(2, RotationDirection.LEFT, 1),
           new PlayerVisualization(3, RotationDirection.RIGHT, 1),
@@ -65,6 +69,8 @@ export class GamePanelComponent implements OnInit {
   private getGridClasses(playersNumber: number): string {
     const base = 'grid-cols-2';
     switch (playersNumber) {
+      case 1:
+        return 'grid-cols-1 grid-rows-1';
       case 2:
         return base + ' grid-rows-1';
       case 3:
