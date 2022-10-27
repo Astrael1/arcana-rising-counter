@@ -7,6 +7,7 @@ import { GameService } from 'src/app/game/game.service';
 import { SetupComponent } from './setup/setup.component';
 import { RotateDirective } from 'src/app/game/directives/rotate.directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CounterBackgroundPipe } from './player-panel/counter-background.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlayerPanelComponent,
     GamePanelComponent,
     SetupComponent,
-    RotateDirective
+    RotateDirective,
+    CounterBackgroundPipe
   ],
   imports: [
     CommonModule,
