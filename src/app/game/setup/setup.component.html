@@ -9,17 +9,23 @@
   ">
     Insert number of players
   </label>
-  <input id="players-number"
-         class="border-2
+  <select id="players-number"
+          class="border-2
              border-stone-50
              text-stone-50
              text-center
              text-2xl
              w-10 mb-2
              bg-transparent"
-         type="number"
-         formControlName="playersNumber"
+          formControlName="playersNumber"
   >
+    <option *ngFor="let option of playerNumberOptions"
+            [ngValue]="option"
+    >
+      {{option}}
+    </option>
+  </select>
+
   <button
     [class.invisible]="!valuePresent"
     type="submit"
