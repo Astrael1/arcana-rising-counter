@@ -17,6 +17,8 @@ export class SetupComponent implements OnInit {
     playersNumber: new FormControl()
   });
 
+  playerNumberOptions = [2,3,4,5];
+
   valuePresent: boolean = false;
 
   constructor(
