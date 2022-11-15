@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameService } from 'src/app/game/service/game/game.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
   classes = 'flex justify-end bg-blue-900 text-stone-50';
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly gameService: GameService
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/setup');
   }
 
-  // TODO implement resetting
+  resetGame(): void {
+    this.gameService.resetGame();
+  }
 
 }
