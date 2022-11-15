@@ -12,11 +12,12 @@
   border-solid
   border-amber-800
   border-2">
-    <app-counter *ngFor="let index of attributeIndexes"
+    <app-counter *ngFor="let index of attributeIndexes; let last = last"
                  [backgroundImage]="index | counterBackground"
                  [value]="attributeValues[index]"
                  (valueIncrease)="increaseValue(index)"
                  (valueDecrease)="decreaseValue(index)"
+                 [class.text-stone-400]="last"
                  class="grow"
     >
     </app-counter>
