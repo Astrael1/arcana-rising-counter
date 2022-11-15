@@ -6,13 +6,20 @@
   [appRotate]="playerVisualization.orientation"
   [class.player-panel__counters-container--side-rotated]="isRotated(playerVisualization.orientation)"
 >
-  <app-counter *ngFor="let index of attributeIndexes; let first = first; let last = last"
-               [backgroundImage]="index | counterBackground"
-               [value]="attributeValues[index]"
-               (valueIncrease)="increaseValue(index)"
-               (valueDecrease)="decreaseValue(index)"
-               class="grow"
-  >
-  </app-counter>
+  <div class="flex w-full h-full
+  overflow-hidden
+  rounded-lg
+  border-solid
+  border-amber-800
+  border-2">
+    <app-counter *ngFor="let index of attributeIndexes"
+                 [backgroundImage]="index | counterBackground"
+                 [value]="attributeValues[index]"
+                 (valueIncrease)="increaseValue(index)"
+                 (valueDecrease)="decreaseValue(index)"
+                 class="grow"
+    >
+    </app-counter>
+  </div>
 </div>
 

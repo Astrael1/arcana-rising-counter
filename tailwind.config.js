@@ -1,6 +1,9 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}', './projects/**/*.{html,ts}'],
   theme: {
+    borderRadius: {
+      'lg': '2rem',
+    },
     extend: {},
   },
   plugins: [],

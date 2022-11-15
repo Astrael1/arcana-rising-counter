@@ -1,9 +1,1 @@
-app-counter:first-child .counter__wrapper {
-  border-bottom-left-radius: 2rem;
-  border-top-left-radius: 2rem;
-}
 
-app-counter:last-child .counter__wrapper {
-  border-bottom-right-radius: 2rem;
-  border-top-right-radius: 2rem;
-}

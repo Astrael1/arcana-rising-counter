@@ -12,7 +12,7 @@ export class CounterBackgroundPipe implements PipeTransform {
     [PlayerAttributes.BLOOD]: this.colorsToGradient('#fc587e', '#98000d', '#3f0202'),
     [PlayerAttributes.POTIONS]: this.colorsToGradient('#69d6ff', '#340dd0', '#1e0086'),
     [PlayerAttributes.GOLD]: this.colorsToGradient('#fff059', '#c0a110', '#9d5408'),
-    [PlayerAttributes.VICTORY_POINTS]: this.colorsToGradient('#ca89ff', '#4505b4', '#270073')
+    [PlayerAttributes.VICTORY_POINTS]: this.colorsToGradient('#ca89ff', '#390a94', '#1c034b')
   }
 
   transform(value: PlayerAttributes): string {
