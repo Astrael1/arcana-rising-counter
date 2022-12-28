@@ -28,4 +28,10 @@ export class HeaderComponent implements OnInit {
     this.gameService.resetGame();
   }
 
+  showScore() {
+    const players = this.gameService.playersNumber;
+    for(let i = 0; i < players; i++) {
+      console.log(this.gameService.getPlayerScore(i));
+    }
+  }
 }
