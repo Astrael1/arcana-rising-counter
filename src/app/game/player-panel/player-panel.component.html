@@ -6,7 +6,17 @@
   [appRotate]="playerVisualization.orientation"
   [class.player-panel__counters-container--side-rotated]="isRotated(playerVisualization.orientation)"
 >
-  <div class="text-center mb-1 font-bold">{{playerVisualization.playerName}}</div>
+  <textarea class="text-center
+    mb-1 font-bold bg-transparent
+    self-center
+    resize-none
+    focus:border-0
+    focus:outline-0"
+            [(ngModel)]="playerName"
+            (keyup.enter)="playerNameSubmitted(playerName)"
+            (blur)="playerNameSubmitted(playerName)"
+  >
+  </textarea>
   <div class="flex w-full h-full
   overflow-hidden
   rounded-lg

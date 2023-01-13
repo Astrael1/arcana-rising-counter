@@ -29,9 +29,9 @@ export class HeaderComponent implements OnInit {
   }
 
   showScore() {
-    const players = this.gameService.playersNumber;
-    for(let i = 0; i < players; i++) {
-      console.log(this.gameService.getPlayerScore(i));
-    }
+    let message = `${this.gameService.getWinnerName()} won!\n`;
+    const scores = this.gameService.getScores();
+    scores.forEach(value=> message = message + `\n${value.name}: ${value.score}`);
+    alert(message);
   }
 }

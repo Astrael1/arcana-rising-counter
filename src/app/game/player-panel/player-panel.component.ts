@@ -21,6 +21,7 @@ export class PlayerPanelComponent implements OnInit {
 
   attributeIndexes = ATTRIBUTE_INDEXES;
   attributeValues: Array<number> = [...ZERO_ARRAY_FOR_ATTRIBUTES];
+  playerName: string;
 
   panelDisplayed: boolean = true;
 
@@ -32,6 +33,11 @@ export class PlayerPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.observeAttributeValues();
+    this.observePlayerName();
+  }
+
+  private observePlayerName() {
+    this.gameService.selectPlayerName(this.playerIndex).subscribe(value => this.playerName = value);
   }
 
   private observeAttributeValues(): void {
@@ -77,5 +83,9 @@ export class PlayerPanelComponent implements OnInit {
 
   isRotated(orientation: RotationDirection): boolean {
     return orientation === RotationDirection.RIGHT || orientation === RotationDirection.LEFT;
+  }
+
+  playerNameSubmitted(newName: string) {
+    this.gameService.setPlayerName(this.playerIndex, newName);
   }
 }

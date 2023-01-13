@@ -5,6 +5,11 @@ import { InitializationError } from 'src/app/game/service/game/InitializationErr
 import { PlayerVisualization } from 'src/app/game/player-panel/PlayerVisualization';
 import { RotationDirection } from 'src/app/game/directives/RotationDirection';
 
+interface NameAndScore {
+  name: string,
+  score: number
+}
+
 @Injectable()
 export class GameService {
 
@@ -18,12 +23,14 @@ export class GameService {
   set playersNumber(value: number) {
     this._playersNumber = value;
     this.playersAttributes = new Array<Array<BehaviorSubject<number>>>(value);
+    this.playerNames = new Array<BehaviorSubject<string>>(value);
 
     this.playersAttributes = [];
     for(let i: number = 0; i < value; i++) {
       this.playersAttributes.push(
         ATTRIBUTE_INDEXES.map((_, index) => new BehaviorSubject(this.getAttributeInitialValue(index)))
       );
+      this.playerNames[i] = new BehaviorSubject<string>(`Player ${i+1}`);
     }
     this._playerVisualizations = this.getPlayerVisualizations(value);
     this.playerVisualizations = new BehaviorSubject<Array<PlayerVisualization>>(this._playerVisualizations);
@@ -34,6 +41,7 @@ export class GameService {
 
   playersAttributes: Array<Array<BehaviorSubject<number>>>;
   playerVisualizations: BehaviorSubject<Array<PlayerVisualization>>;
+  playerNames: Array<BehaviorSubject<string>>;
 
   public selectPlayerAttribute(player: number, attribute: number): Observable<number> {
     try {
@@ -48,9 +56,13 @@ export class GameService {
     }
   }
 
+  public selectPlayerName(player: number): Observable<string> {
+    return this.playerNames[player].asObservable();
+  }
+
   public setPlayerName(player: number, name: string): void {
+    this.playerNames[player].next(name);
     this._playerVisualizations[player].playerName = name;
-    this.playerVisualizations.next(this._playerVisualizations);
   }
 
   public getPlayerScore(player: number): number {
@@ -60,6 +72,25 @@ export class GameService {
       Math.floor(this.getPlayerAttribute(player, PlayerAttributes.CHARM) / 3) +
       Math.floor(this.getPlayerAttribute(player, PlayerAttributes.HERBS) / 3) +
       Math.floor(this.getPlayerAttribute(player, PlayerAttributes.POTIONS) / 3)
+  }
+
+  public getWinnerName(): string {
+    const results = this.getScores();
+    const winner = results.reduce(function(prev, current) {
+      return (prev.score > current.score) ? prev : current
+    });
+    return winner.name;
+  }
+
+  public getScores(): Array<NameAndScore> {
+    const results = [];
+    for(let i = 0; i < this.playersNumber; i++) {
+      results.push({
+        name: this.playerNames[i].value,
+        score: this.getPlayerScore(i)
+      });
+    }
+    return results;
   }
 
   public setAttributeValueForPlayer(player: number, attribute: number, value: number): void {
@@ -87,6 +118,7 @@ export class GameService {
   private getAttributeInitialValue(attribute: number): number {
     return attribute === PlayerAttributes.VICTORY_POINTS ? 0 : 1;
   }
+
 
   public getPlayerVisualizations(playersNumber: number): Array<PlayerVisualization> {
     switch (playersNumber) {
