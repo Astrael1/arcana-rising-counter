@@ -28,4 +28,10 @@ export class HeaderComponent implements OnInit {
     this.gameService.resetGame();
   }
 
+  showScore() {
+    let message = `${this.gameService.getWinnerName()} won!\n`;
+    const scores = this.gameService.getScores();
+    scores.forEach(value=> message = message + `\n${value.name}: ${value.score}`);
+    alert(message);
+  }
 }

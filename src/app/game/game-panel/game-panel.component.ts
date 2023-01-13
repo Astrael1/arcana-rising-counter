@@ -1,6 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { GameService } from 'src/app/game/service/game/game.service';
-import { RotationDirection } from '../directives/RotationDirection';
 import { PlayerVisualization } from 'src/app/game/player-panel/PlayerVisualization';
 
 @Component({
@@ -23,46 +22,8 @@ export class GamePanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.playersNumber = this.gameService.playersNumber;
-    this.players = this.getPlayerVisualizations(this.playersNumber);
+    this.players = this.gameService.getPlayerVisualizations(this.playersNumber);
     this.gridClasses = this.getGridClasses(this.playersNumber);
-
-  }
-
-  private getPlayerVisualizations(playersNumber: number) {
-    switch (playersNumber) {
-      case 1:
-        return [
-          new PlayerVisualization(0, RotationDirection.NONE, 1)
-        ]
-      case 2:
-        return [
-          new PlayerVisualization(0, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(1, RotationDirection.LEFT, 1)
-        ];
-      case 3:
-        return [
-          new PlayerVisualization(0, RotationDirection.UPSIDE_DOWN, 2),
-          new PlayerVisualization(1, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(2, RotationDirection.LEFT, 1),
-        ];
-      case 4:
-        return [
-          new PlayerVisualization(0, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(1, RotationDirection.LEFT, 1),
-          new PlayerVisualization(2, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(3, RotationDirection.LEFT, 1),
-        ]
-      case 5:
-        return [
-          new PlayerVisualization(0, RotationDirection.UPSIDE_DOWN, 2),
-          new PlayerVisualization(1, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(2, RotationDirection.LEFT, 1),
-          new PlayerVisualization(3, RotationDirection.RIGHT, 1),
-          new PlayerVisualization(4, RotationDirection.LEFT, 1),
-        ]
-      default:
-        throw new Error(`Invalid number of players: ${playersNumber}`);
-    }
 
   }
 
